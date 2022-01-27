@@ -7,7 +7,7 @@ android {
     compileSdk rootProject.compileSdk
 
     defaultConfig {
-        applicationId "com.test.learnkotlin"
+        applicationId "com.test.example"
         minSdk rootProject.minSdk
         targetSdk rootProject.targetSdk
         versionCode rootProject.versionCode
