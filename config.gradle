@@ -1,4 +1,4 @@
-ext{
+ext {
     android = [
             compileSdk = 30,
             targetSdk = 30,
@@ -6,4 +6,28 @@ ext{
             versionCode = 1,
             versionName = "1.0.0"
     ]
+
+    dependVersion = [
+//            lifecycle_version: "2.4.0",
+            lifecycle_version: "2.2.0",
+            appcompat        : "1.3.0",
+    ]
+
+    //https://developer.android.com/kotlin/ktx
+    dependencies = [
+            androidx_appcompat                : "androidx.appcompat:appcompat:${dependVersion.appcompat}",
+            material                          : "com.google.android.material:material:${dependVersion.appcompat}",
+            constraintlayout                  : "androidx.constraintlayout:constraintlayout:2.0.4",
+//            androidx_core                     : "androidx.core:core-ktx:1.7.0",
+            androidx_core                     : "androidx.core:core-ktx:1.5.0",
+            androidx_collection               : "androidx.collection:collection-ktx:1.2.0",
+//            androidx_fragment                 : "androidx.fragment:fragment-ktx:1.4.0",
+            androidx_lifecycle_runtime        : "androidx.lifecycle:lifecycle-runtime-ktx:${dependVersion.lifecycle_version}",
+            androidx_lifecycle_livedata       : "androidx.lifecycle:lifecycle-livedata-ktx:${dependVersion.lifecycle_version}",
+            androidx_lifecycle_viewmodel      : "androidx.lifecycle:lifecycle-viewmodel-ktx:${dependVersion.lifecycle_version}",
+            androidx_lifecycle_reactivestreams: "androidx.lifecycle:lifecycle-reactivestreams-ktx:${dependVersion.lifecycle_version}",
+            kotlinx_coroutines_core           : "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0",
+    ]
+
+
 }
