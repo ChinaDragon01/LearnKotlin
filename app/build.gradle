@@ -53,4 +53,9 @@ dependencies {
     implementation dependencies.androidx_lifecycle_livedata
     implementation dependencies.androidx_lifecycle_viewmodel
     implementation dependencies.kotlinx_coroutines_core
+    implementation dependencies.retrofit2
+    implementation dependencies.retrofit2_converter_gson
+    implementation dependencies.retrofit2_converter_adapter
+    implementation dependencies.okhttp3_logging_interceptor
+    implementation dependencies.google_gson
 }
