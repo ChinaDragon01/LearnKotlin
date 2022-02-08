@@ -3,6 +3,8 @@ package com.test.learnkotlin
 import com.test.learnkotlin.bean.Person
 
 /*
+    Kotlin 注解处理 https://www.kotlincn.net/docs/reference/kapt.html
+
     官网文档-中文版：https://www.kotlincn.net/docs/reference/basic-syntax.html
     官网文档-英文版：https://kotlinlang.org/docs/basic-syntax.html#variables
  */

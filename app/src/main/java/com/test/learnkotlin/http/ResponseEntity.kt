@@ -3,7 +3,8 @@ package com.test.learnkotlin.http
 import com.google.gson.annotations.SerializedName
 import com.test.learnkotlin.http.exception.HttpException
 
-class ResponseEntity<T> {
+class ResponseEntity<T>() {
+
     @SerializedName(value = "code")
     val code = 0
 
@@ -15,7 +16,23 @@ class ResponseEntity<T> {
 
     var exception: HttpException? = null
 
-    fun isSuccessful() = code == 0
+    constructor(handleException: HttpException) : this() {
+        this.exception = handleException
+    }
 
-    fun isException() = exception != null
+    fun isSuccessful():Boolean = code == 0
+
+    /**
+     * 判断是否请求失败
+     */
+    fun isFailure(): Boolean {
+        return code != 0 && exception == null
+    }
+
+    fun isException():Boolean = exception != null
+    override fun toString(): String {
+        return "ResponseEntity(code=$code, message=$message, data=$data, exception=$exception)"
+    }
+
+
 }

@@ -2,6 +2,7 @@ package com.test.learnkotlin.app
 
 import android.app.Application
 import android.content.Context
+import com.test.learnkotlin.utils.GlobalCrashHandler
 
 class App : Application() {
 
@@ -12,6 +13,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         appContext = this
+        GlobalCrashHandler.getInstance().registerContext(this)
     }
 
 }

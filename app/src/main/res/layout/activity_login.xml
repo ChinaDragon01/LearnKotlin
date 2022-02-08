@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-</LinearLayout>
+    <data>
+
+        <variable
+            name="mLoginViewModel"
+            type="com.test.learnkotlin.viewmodel.LoginViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_mobile"
+            style="@style/common_style_height_50"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:text="1234567890" />
+
+        <EditText
+            android:id="@+id/et_smscode"
+            style="@style/common_style_height_50"
+            android:inputType="number"
+            android:maxLength="4" />
+
+        <TextView
+            android:id="@+id/tv_sms_code"
+            style="@style/common_style_height_50"
+            android:onClick="@{mLoginViewModel::performViewClicks}"
+            android:text="获取" />
+
+        <TextView
+            android:id="@+id/tv_login"
+            style="@style/common_style_height_50"
+            android:text="login" />
+
+
+    </LinearLayout>
+</layout>

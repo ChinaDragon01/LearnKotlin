@@ -3,6 +3,9 @@ package com.test.learnkotlin.http.exception
 import android.net.ParseException
 import android.nfc.FormatException
 import com.google.gson.JsonParseException
+import com.test.learnkotlin.http.ResponseEntity
+import com.test.learnkotlin.utils.AppExecutors
+import com.test.learnkotlin.utils.ToastUtil
 import org.json.JSONException
 import java.io.UnsupportedEncodingException
 import java.net.MalformedURLException
@@ -31,14 +34,14 @@ object ExceptionEngine {
     /**
      * 处理Token校验逻辑
      */
-//    fun handleTokenCheck(entity: ResponseEntity<*>) {
-//        AppExecutors.executeOnMainThread {
-//            if (!entity.message.isNullOrEmpty()) {
-//                ToastUtil.showToast(entity.message)
-//            }
+    fun handleTokenCheck(entity: ResponseEntity<*>) {
+        AppExecutors.executeOnMainThread {
+            if (!entity.message.isNullOrEmpty()) {
+                ToastUtil.show(entity.message)
+            }
 //            LoginHelper.logout(Tool.getContext(), needLogin = true, finishSelf = false)
-//        }
-//    }
+        }
+    }
 
     /**
      * 处理异常

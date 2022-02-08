@@ -2,8 +2,10 @@ package com.test.learnkotlin.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.test.learnkotlin.BR
 import com.test.learnkotlin.R
 import com.test.learnkotlin.base.BaseActivity
+import com.test.learnkotlin.databinding.ActivityMainBinding
 import com.test.learnkotlin.viewmodel.MainViewModel
 
 /*
@@ -37,14 +39,28 @@ Android 上的 Kotlin 协程
 https://developer.android.com/kotlin/coroutines#executing-in-a-background-thread
 
 
+Lifecycle
+https://developer.android.google.cn/jetpack/androidx/releases/lifecycle
+
+
+ Kotlin 注解处理 https://www.kotlincn.net/docs/reference/kapt.html
+
+
  */
-class MainActivity : BaseActivity<MainViewModel>() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
+    override fun initView() {
+        super.initView()
     }
 
+    override fun initData() {
+        super.initData()
+    }
 
+    override fun initEvent() {
+        super.initEvent()
+    }
 
+    override fun variableId(): Int = BR.mMainViewModel
 
+    override fun getContentLayoutId(): Int = R.layout.activity_main
 }

@@ -5,9 +5,6 @@ import retrofit2.Response
 
 /**
  * Http请求异常
- *
- * @author liyunlong
- * @since 2020/5/25 16:12
  */
 class HttpException : RuntimeException {
 
