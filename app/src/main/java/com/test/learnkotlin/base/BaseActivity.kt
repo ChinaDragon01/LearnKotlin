@@ -7,11 +7,12 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.test.learnkotlin.utils.ReflexUtil2
+import com.test.learnkotlin.utils.ToastUtil
 
 abstract class BaseActivity<ViewModel : BaseViewModel<*>, DataBinding : ViewDataBinding> :
     AppCompatActivity(),
     IActivity<ViewModel> {
-    private var mViewModel: ViewModel? = null
+    open lateinit var mViewModel: ViewModel
     open lateinit var mDataBinding: DataBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +23,14 @@ abstract class BaseActivity<ViewModel : BaseViewModel<*>, DataBinding : ViewData
     }
 
     private fun initViewModel() {
-        mViewModel = obtainViewModel()
+        mViewModel = obtainViewModel()!!
+        mViewModel?.apply {
+            loadingEvent.observe(this@BaseActivity,{
+                if (it == true){
+                    ToastUtil.show("加载中...")
+                }
+            })
+        }
         mDataBinding = DataBindingUtil.setContentView(this, getContentLayoutId())
         mDataBinding?.apply {
             lifecycleOwner = this@BaseActivity

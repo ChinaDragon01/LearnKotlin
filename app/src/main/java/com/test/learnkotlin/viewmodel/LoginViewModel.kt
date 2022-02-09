@@ -3,9 +3,11 @@ package com.test.learnkotlin.viewmodel
 import android.app.Application
 import android.view.View
 import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.test.learnkotlin.R
+import com.test.learnkotlin.adapter.CommonAdapter
 import com.test.learnkotlin.base.BaseViewModel
 import com.test.learnkotlin.http.ResponseEntity
 import com.test.learnkotlin.model.LoginModel
@@ -15,7 +17,11 @@ import com.test.learnkotlin.utils.ToastUtil
 import kotlinx.coroutines.launch
 
 class LoginViewModel(application: Application) : BaseViewModel<LoginModel>(application) {
-        val smsCodeLiveEvent = SingleLiveEvent<Boolean>()
+    val smsCodeLiveEvent = SingleLiveEvent<Boolean>()
+    val paddingBottomValue = ObservableInt()
+    val backgroundResId = ObservableInt(R.drawable.shape_bg_color_e2e2e2)
+    val commonAdapter = ObservableField<CommonAdapter>()
+
 
     fun login(registerPhone: String, verifyCode: String, x: String = "0", y: String = "0") {
         viewModelScope.launch {
@@ -43,7 +49,8 @@ class LoginViewModel(application: Application) : BaseViewModel<LoginModel>(appli
                         ToastUtil.show(it.exception!!.message!!)
                     }
                 }
-            })
+            }, showLoading = true
+        )
     }
 
     fun smsCode(
@@ -62,7 +69,10 @@ class LoginViewModel(application: Application) : BaseViewModel<LoginModel>(appli
         val viewId = view.id
         when (viewId) {
             R.id.tv_sms_code -> {
+                paddingBottomValue.set(500)
                 smsCodeLiveEvent.postValue(true)
+                backgroundResId.set(R.drawable.shape_bg_black)
+                LogUitls.i("paddingBottomValue = ${paddingBottomValue.get()}")
             }
         }
     }

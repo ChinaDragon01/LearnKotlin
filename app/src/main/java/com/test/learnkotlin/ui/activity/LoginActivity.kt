@@ -6,6 +6,7 @@ import android.widget.EditText
 import android.widget.TextView
 import com.test.learnkotlin.BR
 import com.test.learnkotlin.R
+import com.test.learnkotlin.adapter.CommonAdapter
 import com.test.learnkotlin.base.BaseActivity
 import com.test.learnkotlin.databinding.ActivityLoginBinding
 import com.test.learnkotlin.utils.ToastUtil
@@ -38,6 +39,7 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
 
     override fun initData() {
         super.initData()
+        mViewModel.commonAdapter.set(CommonAdapter())
     }
 
     override fun initEvent() {
@@ -49,7 +51,7 @@ class LoginActivity : BaseActivity<LoginViewModel, ActivityLoginBinding>() {
                 return@observe
             }
 
-            getViewModel()?.smscode2("REGISTER", mobile)
+            mViewModel.smscode2("REGISTER", mobile)
 
         })
 

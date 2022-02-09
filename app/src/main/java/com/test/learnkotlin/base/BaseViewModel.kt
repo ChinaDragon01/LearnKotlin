@@ -88,5 +88,9 @@ open class BaseViewModel<Model : BaseModel>(application: Application) :
         }
     }
 
-
+    sealed class launchHttpState {
+        object Loading : launchHttpState()
+        object Fail : launchHttpState()
+        object Except : launchHttpState()
+    }
 }
